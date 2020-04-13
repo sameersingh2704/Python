@@ -20,6 +20,9 @@ import pyttsx3
 # initialisation 
 engine = pyttsx3.init() 
 
+#import wikipidea
+import wikipedia
+
 
 # obtain audio from the microphone
 r = sr.Recognizer()
@@ -37,6 +40,12 @@ print(Query)
 def get_app(Q):
     if Q == "time":
         print(datetime.now())
+    elif Q=="wikipedia":
+        speak('Searching Wikipedia')
+        query = query.replace("wikipedia","")
+        results = wikipedia.summary(query, sentences=2)
+        speak("According to Wikipedia")
+        speak(results)
     elif Q == "notepad":
         subprocess.call(['Notepad.exe'])
     elif Q == "calculator":
